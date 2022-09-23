@@ -1,5 +1,9 @@
 
-SELECT o.order_id, o.order_date, o.shipdate, o.shipmode, 
+SELECT 
+--packages
+{{ dbt_utils.surrogate_key(['o.order_id', 'c.customerid', 'p.productid']) }} as sk_orders,
+
+o.order_id, o.order_date, o.shipdate, o.shipmode, 
        o.ordercostprice, o.ordersellingprice,
        o.ordersellingprice - o.ordercostprice orderprofit,       
        --from raw customer
