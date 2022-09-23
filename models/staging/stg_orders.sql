@@ -5,7 +5,7 @@ SELECT
 
 o.order_id, o.order_date, o.shipdate, o.shipmode, 
        o.ordercostprice, o.ordersellingprice,
-       o.ordersellingprice - o.ordercostprice orderprofit,       
+       --o.ordersellingprice - o.ordercostprice orderprofit,       
        --from raw customer
        c.customerid, c.customername, c.segment, c.country,
        --from Product
