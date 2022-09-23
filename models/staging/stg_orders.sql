@@ -5,7 +5,11 @@ SELECT o.order_id, o.order_date, o.shipdate, o.shipmode,
        --from raw customer
        c.customerid, c.customername, c.segment, c.country,
        --from Product
-       p.productid, p.category, p.productname, p.subcategory
+       p.productid, p.category, p.productname, p.subcategory,
+      --macro
+       o.ordersellingprice - o.ordercostprice orderprofit,       
+      {{ markup('ordersellingprice','ordercostprice') }} as markup
+
   FROM {{ref('raw_orders')}} as o
 LEFT JOIN {{ref('raw_customer')}} as c
 on o.customerid = c.customerid
